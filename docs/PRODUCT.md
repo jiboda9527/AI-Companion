@@ -44,3 +44,4 @@
 
 7. Future Vision（未来愿景）
    AI Companion aims to become an intelligent desktop operating companion that listens, understands, remembers and assists users in daily life.
+  AI Companion 最终希望成为一个能够倾听、理解、记忆并协助用户工作的本地 AI 桌面助手。
