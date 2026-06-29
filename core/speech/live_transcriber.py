@@ -1,43 +1,27 @@
-import soundcard as sc
-from faster_whisper import WhisperModel
-import numpy as np
+from core.speech.audio_capture import AudioCapture
+from core.speech.transcriber import Transcriber
+
 
 class LiveTranscriber:
 
     def __init__(self):
 
-        print("[Speech] Loading Whisper model...")
+        self.audio = AudioCapture()
 
-        self.model = WhisperModel(
-            "small",
-            device="cuda",
-            compute_type="float16"
-        )
-
-        print("[Speech] Whisper loaded.")
+        self.whisper = Transcriber()
 
     def start(self):
 
-        speakers = sc.all_speakers()
+        self.audio.start()
 
-        speaker = next(
-            s for s in speakers
-            if "SteelSeries Sonar - Media" in s.name
-        )
+        print("[Speech] Listening...")
 
-        print(f"Using: {speaker.name}")
+        while True:
 
-        with speaker.recorder(samplerate=16000) as mic:
+            pcm = self.audio.read()
 
-            print("Listening...")
+            text = self.whisper.transcribe(pcm)
 
-            while True:
+            if text:
 
-                data = mic.record(numframes=16000)
-
-                volume = np.abs(data).mean()
-
-                print(f"Volume: {volume:.5f}")
-
-    def stop(self):
-        print("[Speech] Stop.")
+                print(text)
