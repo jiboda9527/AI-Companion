@@ -34,3 +34,13 @@
   Memory
   Agent
   Plugin System
+
+6.Project Principles（项目原则）
+  - Local First（默认本地运行）
+  - Privacy First（默认保护用户隐私）
+  - Modular Design（模块化设计）
+  - Plugin Friendly（插件化扩展）
+  - Cross Platform（跨平台支持）
+
+7. Future Vision（未来愿景）
+   AI Companion aims to become an intelligent desktop operating companion that listens, understands, remembers and assists users in daily life.
